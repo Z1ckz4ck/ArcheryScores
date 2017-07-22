@@ -1,0 +1,83 @@
+package eu.scp.z1ckz4ck.archeryscores.activity;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import eu.scp.z1ckz4ck.archeryscores.R;
+import eu.scp.z1ckz4ck.archeryscores.entity.User;
+import eu.scp.z1ckz4ck.archeryscores.services.ScoreTrackerService;
+import eu.scp.z1ckz4ck.archeryscores.utils.StringUtils;
+
+public class UserNew extends AppCompatActivity {
+    private static final String TAG = "UserNew";
+    private User user;
+    private ScoreTrackerService sts;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_new);
+        sts = (ScoreTrackerService) getApplication();
+        init();
+
+    }
+
+    private void init() {
+        user = (User)getIntent().getSerializableExtra("user");
+        final EditText fname = (EditText) findViewById(R.id.txt_new_user_forname);
+        final EditText ltname = (EditText) findViewById(R.id.txt_new_user_lastname);
+        final EditText email = (EditText) findViewById(R.id.txt_new_user_email);
+        Button btnSaveNewUser = (Button) findViewById(R.id.btn_saveNewUser);
+        Button btnDeleteUser = (Button) findViewById(R.id.btn_saveDeleteUser);
+
+        if (user == null) {
+            user = new User();
+            btnDeleteUser.setVisibility(View.GONE);
+        } else {
+            user = sts.getUser(user.getUserId());
+            fname.setText(user.getFirstName());
+            ltname.setText(user.getLastName());
+            email.setText(user.geteMail());
+            btnDeleteUser.setVisibility(View.VISIBLE);
+        }
+
+
+        btnSaveNewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String mail = email.getText().toString();
+
+                if(StringUtils.isValidEmail(mail)){
+                user.setFirstName(fname.getText().toString());
+                user.setLastName(ltname.getText().toString());
+                user.seteMail(mail);
+                sts.saveOrUpdate(user);
+                setResult(20);
+                finish();
+                }else{
+                    //TODO: OPEN ALERT DIALOG
+                    Log.i(TAG,"KEINE VALIDE MAIL ADRESSE");
+
+                }
+            }
+
+        });
+
+        btnDeleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(user != null){
+                    Log.i(TAG,"user geloescht "+ user.getUserId());
+                    sts.deleteUser(user.getUserId());
+                    setResult(20);
+                    finish();
+                }
+            }
+        });
+    }
+
+}

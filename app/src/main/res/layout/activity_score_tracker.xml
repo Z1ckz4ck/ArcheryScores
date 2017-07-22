@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_score_tracker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context="eu.scp.z1ckz4ck.archeryscores.activity.MainActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/grid_pakour"
+                    android:columnCount="2"
+                    android:orientation="horizontal"
+                    android:rowCount="1">
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@string/txtParcour"
+                        android:ems="9"
+                        android:id="@+id/txt_pakour" android:textAlignment="center" android:textStyle="normal|bold"/>
+                <Button
+                        android:text="ADD NEW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/btn_add_pakour" android:elevation="3dp"
+                        android:ems="9"
+                        android:layout_toEndOf="@+id/btn_add_pakour"
+                />
+                <Spinner
+                        android:layout_width="171dp"
+                        android:layout_height="match_parent" android:id="@+id/sp_pakour"
+                        android:layout_alignParentStart="true"
+                        android:ems="9"
+                />
+            </GridLayout>
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/grid_scores"
+                    android:columnCount="2"
+                    android:orientation="horizontal"
+                    android:rowCount="1">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scores"
+                        android:ems="9"
+                        android:id="@+id/txt_scores" android:textAlignment="center" android:inputType="none"
+                        android:textStyle="normal|bold"/>
+                <Button
+                        android:text="ADD NEW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/btn_add_scores"
+                        android:textAlignment="center"
+                        android:elevation="3dp"
+                        android:ems="9"/>
+            </GridLayout>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/sp_score"
+                    android:layout_alignParentStart="true"
+            />
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/grid_user"
+                    android:columnCount="2"
+                    android:orientation="horizontal"
+                    android:rowCount="1">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="User"
+                        android:ems="10"
+                        android:id="@+id/txt_user" android:textAlignment="center" android:textStyle="normal|bold"/>
+                <Button
+                        android:text="ADD NEW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/btn_adduser"
+                        android:textAlignment="center"
+                        android:elevation="3dp"
+                        android:ems="10"/>
+            </GridLayout>
+            <Button
+                    android:text="@string/btnStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/btn_start"/>
+            <ExpandableListView android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/exp_lv">    </ExpandableListView>
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="158dp"
+                    android:id="@+id/lv_users"
+                    android:ems="10"/>
+        </LinearLayout>
+
+</ScrollView>
+        </RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lv_users"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:checkMark="?android:attr/listChoiceIndicatorMultiple">
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="?android:attr/listPreferredItemHeight"
+              android:gravity="center_vertical"
+              android:hint="@string/txtFirstname"
+              android:id="@+id/lv_item_user_firstname"
+              android:layout_weight="1" android:layout_gravity="left|center_vertical">
+    </TextView>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="?android:attr/listPreferredItemHeight"
+              android:gravity="center_vertical"
+              android:hint="@string/txtLastname"
+              android:id="@+id/lv_item_user_lastname"
+              android:layout_weight="1" android:layout_gravity="left|center_vertical">
+    </TextView>
+
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_configUser"
+            android:src="@drawable/config2_24_24"/>
+
+
+</LinearLayout>

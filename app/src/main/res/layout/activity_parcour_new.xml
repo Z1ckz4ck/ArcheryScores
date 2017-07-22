@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_parcour_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context="eu.scp.z1ckz4ck.archeryscores.activity.ParcourNew">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/cont_base_view">
+        <TextView
+                android:text="Create New Parcour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/txt_create_parcour"
+                android:textAlignment="center" android:textStyle="normal|bold"/>
+    </LinearLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/scv_create_parcour_new">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="Name"
+                    android:ems="10"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="55dp" android:id="@+id/txt_new_parcour_name" android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true" android:textAlignment="center"
+                    android:focusable="true"
+                    android:nextFocusDown="@+id/txt_new_parcour_target_count"
+            />
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/txt_new_parcour_target_count" android:hint="Count Targets"
+                    android:textAlignment="center"/>
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/list_targets_new_parcour"/>
+            <TextView
+                    android:text="Score Type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/txt_score_type"
+                    android:textAlignment="center" android:textStyle="normal|bold"/>
+            <Spinner
+                    android:id="@+id/sp_score_type_parcoure_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"/>
+            <Button
+                    android:text="Create"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/btn_create_new_parcour"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
