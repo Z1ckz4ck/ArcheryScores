@@ -107,62 +107,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createListViewUser(ListView lvUsers) {
-        lvUsers.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
         List<LvUser> lvUserItems = addUsersToLV();
         int lv_item_user_id = R.layout.lv_item_user;
-        adapter = new UserAdapter(this, lv_item_user_id, lvUserItems, lvUsers) ;
+        adapter = new UserAdapter(this, lv_item_user_id, lvUserItems) ;
 
         lvUsers.setAdapter(adapter);
-        //lvUsers.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        lvUsers.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        //lvUsers.setMultiChoiceModeListener(createNewMultiChoiceListener());
-
-        lvUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvUsers.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LvUser user = (LvUser) parent.getItemAtPosition(position);
-                Log.i(TAG,"Item selected in Listview");
+            public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+
+                Toast.makeText(MainActivity.this,"Select",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode actionMode) {
+
             }
         });
+
+
     }
 
 
-    /**
-     * creates new MultiChoiceModeListener for Liestview
-     *
-     * @return
-     */
-    private AbsListView.MultiChoiceModeListener createNewMultiChoiceListener() {
-
-        return new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                Log.i(TAG, "Select A Item in Listview");
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-
-            }
-        };
-    }
 
     /** adds all Users to Listview
      * @return

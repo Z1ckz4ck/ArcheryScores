@@ -27,7 +27,7 @@ public class UserAdapter extends ArrayAdapter<LvUser> {
     private List<LvUser> users;
     private ListView lvUsers;
 
-    public UserAdapter(Context context, int resource, List<LvUser> users, ListView lvUsers) {
+    public UserAdapter(Context context, int resource, List<LvUser> users) {
         super(context, resource, users);
         this.context = context;
         this.users = users;
