@@ -5,11 +5,12 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:checkMark="?android:attr/listChoiceIndicatorMultiple">
+              android:background="#8FE5EB">
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:minHeight="?android:attr/listPreferredItemHeight"
               android:gravity="center_vertical"
+              android:textStyle="bold"
               android:hint="@string/txtFirstname"
               android:layout_marginLeft="10dp"
               android:id="@+id/lv_item_user_firstname"
@@ -17,6 +18,7 @@
     </TextView>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:textStyle="bold"
               android:minHeight="?android:attr/listPreferredItemHeight"
               android:gravity="center_vertical"
               android:hint="@string/txtLastname"

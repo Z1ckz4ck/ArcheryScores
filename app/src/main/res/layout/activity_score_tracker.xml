@@ -29,17 +29,11 @@
                         android:ems="9"
                         android:id="@+id/txt_pakour" android:textAlignment="center" android:textStyle="normal|bold"/>
                 <Button
-                        android:text="ADD NEW"
+                        android:text="@string/btnChange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/btn_add_pakour" android:elevation="3dp"
                         android:ems="9"
                         android:layout_toEndOf="@+id/btn_add_pakour"
-                />
-                <Spinner
-                        android:layout_width="171dp"
-                        android:layout_height="match_parent" android:id="@+id/sp_pakour"
-                        android:layout_alignParentStart="true"
-                        android:ems="9"
                 />
             </GridLayout>
             <GridLayout
@@ -52,12 +46,12 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Scores"
+                        android:text="@string/txtScores"
                         android:ems="9"
                         android:id="@+id/txt_scores" android:textAlignment="center" android:inputType="none"
                         android:textStyle="normal|bold"/>
                 <Button
-                        android:text="ADD NEW"
+                        android:text="@string/add_new"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/btn_add_scores"
                         android:textAlignment="center"
