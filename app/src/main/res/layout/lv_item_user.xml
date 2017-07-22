@@ -11,6 +11,7 @@
               android:minHeight="?android:attr/listPreferredItemHeight"
               android:gravity="center_vertical"
               android:hint="@string/txtFirstname"
+              android:layout_marginLeft="10dp"
               android:id="@+id/lv_item_user_firstname"
               android:layout_weight="1" android:layout_gravity="left|center_vertical">
     </TextView>

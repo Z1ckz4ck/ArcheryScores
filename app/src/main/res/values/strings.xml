@@ -11,4 +11,6 @@
     <string name="btnSave">Save</string>
     <string name="btnDelete">Delete</string>
     <string name="txtParcour">Parcour</string>
+    <string name="valid_e_mail">Valid E-Mail Adress is required!</string>
+    <string name="close">Close</string>
 </resources>

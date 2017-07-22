@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Spinner sp_pacour;
     private ScoreTrackerService sts;
     private Parcour choosenParcour;
-    private ListView lvUsers;
     private Spinner spScorePoints;
     private UserAdapter adapter;
 
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * Initialize the Activity
      */
     public void init() {
         //Pacour
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Users
+        //Users -> open user Activity to add User
         Button btn_addUserNew = (Button) findViewById(R.id.btn_adduser);
         btn_addUserNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,11 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        lvUsers = (ListView) findViewById(R.id.lv_users);
-        createListViewUser();
+        ListView lvUsers = (ListView) findViewById(R.id.lv_users);
+        createListViewUser(lvUsers);
     }
 
-    private void createListViewUser() {
+    private void createListViewUser(ListView lvUsers) {
+        lvUsers.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         List<LvUser> lvUserItems = addUsersToLV();
         int lv_item_user_id = R.layout.lv_item_user;
         adapter = new UserAdapter(this, lv_item_user_id, lvUserItems, lvUsers) ;
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    /**
+    /** adds all Users to Listview
      * @return
      */
     private List<LvUser> addUsersToLV() {
@@ -194,25 +194,12 @@ public class MainActivity extends AppCompatActivity {
         spScorePoints.setAdapter(adapter);
     }
 
-    private void addUserToSpinner(Spinner sp_user) {
-        List<User> allUser = sts.refreshAndgetAllUser();
-        String[] users = new String[allUser.size()];
-
-        for (int i = 0; i < allUser.size(); i++) {
-            users[i] = allUser.get(i).getFirstName() + " " + allUser.get(i).getLastName();
-            Log.i(TAG, "USERS " + users[i]);
-        }
-        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, users);
-        sp_user.setAdapter(adapter);
-
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 20 && resultCode == 20) {
-            createListViewUser();
+            createListViewUser((ListView) findViewById(R.id.lv_users));
             adapter.notifyDataSetChanged();
 
         }
@@ -230,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Start Button clicked");
             }
         });
+        Toast.makeText(MainActivity.this,"Start Pacour",Toast.LENGTH_SHORT).show();
     }
 
 }
