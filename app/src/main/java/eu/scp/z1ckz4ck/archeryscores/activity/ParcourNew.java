@@ -42,7 +42,7 @@ public class ParcourNew extends AppCompatActivity {
         listViewTargets = (ListView) findViewById(R.id.list_targets_new_parcour);
 
         spScoreType = (Spinner) findViewById(R.id.sp_score_type_parcoure_new);
-        String[] scoreTypes = new String[]{ScoreType.NFAS_STANDARD.getDiscription(), ScoreType.NFAS_SPECIAL.getDiscription()};
+        String[] scoreTypes = new String[]{ScoreType.NFAS_STANDARD.getDiscription(), ScoreType.DBSV_STANDARD.getDiscription()};
         spScoreType.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, scoreTypes));
         spScoreType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -52,7 +52,7 @@ public class ParcourNew extends AppCompatActivity {
                 if (scoretype.toString().equals(ScoreType.NFAS_STANDARD.getDiscription())) {
                     parcour.setScoreType(ScoreType.NFAS_STANDARD);
                 } else {
-                    parcour.setScoreType(ScoreType.NFAS_SPECIAL);
+                    parcour.setScoreType(ScoreType.DBSV_STANDARD);
                 }
             }
 

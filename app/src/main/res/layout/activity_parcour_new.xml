@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/cont_base_view">
         <TextView
-                android:text="Create New Parcour"
+                android:text="@string/create_new_parcour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/txt_create_parcour"
                 android:textAlignment="center" android:textStyle="normal|bold"/>

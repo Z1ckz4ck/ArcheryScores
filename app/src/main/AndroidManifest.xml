@@ -20,11 +20,22 @@
         <activity android:name="eu.scp.z1ckz4ck.archeryscores.activity.ParcourNew"
                   android:theme="@style/AppTheme">
         </activity>
-    <activity
-            android:name="eu.scp.z1ckz4ck.archeryscores.activity.UserNew"
-            android:label="@string/title_activity_user_new"
-            android:theme="@style/AppTheme">
-    </activity>
+        <activity
+                android:name="eu.scp.z1ckz4ck.archeryscores.activity.UserNew"
+                android:label="@string/title_activity_user_new"
+                android:theme="@style/AppTheme">
+        </activity>
+        <activity
+                android:name="eu.scp.z1ckz4ck.archeryscores.activity.ScoresNew"
+                android:label="@string/title_activity_Scores_new"
+                android:theme="@style/AppTheme">
+        </activity>
+        <activity
+                android:name="eu.scp.z1ckz4ck.archeryscores.activity.SelectParcour"
+                android:label="@string/title_activity_SelectPacour"
+                android:theme="@style/AppTheme">
+        </activity>
+
     </application>
 
 </manifest>

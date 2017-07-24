@@ -17,18 +17,6 @@ public class ScoreTrackerService extends Application{
     private DbHandlerUser dbHandlerUser;
     private List<User> activeUserL;
     private ScoreType scoreType;
-  /**  private static ScoreTrackerService scoreTrackerService;
-
-    public static ScoreTrackerService getInstance( Context context){
-        if(scoreTrackerService != null){
-            return scoreTrackerService;
-        }else{
-            scoreTrackerService = new ScoreTrackerService(context);
-            return scoreTrackerService;
-        }
-    }**/
-
-
 
     public ScoreTrackerService() {
         dbHandlerUser = new DbHandlerUser(this);

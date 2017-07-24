@@ -6,7 +6,9 @@ package eu.scp.z1ckz4ck.archeryscores.enums;
 public enum ScoreType {
 
     NFAS_STANDARD(20,16,14,10,8,4,"20/16,14/10,8/4"),
-    NFAS_SPECIAL(15,12,10,7,5,2,"15/12,10/7,5/2");
+    DBSV_STANDARD(15,12,10,7,5,2,"15/12,10/7,5/2"),
+    HUNTER_3D(15,0,12,0,7,0,"Center Kill, Kill , Body Hit");
+
 
 
    private int firstKill;

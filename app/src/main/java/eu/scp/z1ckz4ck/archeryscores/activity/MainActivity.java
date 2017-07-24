@@ -46,28 +46,20 @@ public class MainActivity extends AppCompatActivity {
      */
     public void init() {
         //Pacour
-       Button btnOpenParcourNew = (Button) findViewById(R.id.btn_add_pakour);
-        btnOpenParcourNew.setOnClickListener(new View.OnClickListener() {
+       Button btnSelectParcour = (Button) findViewById(R.id.btn_select_parcour);
+        btnSelectParcour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent userNew = new Intent(MainActivity.this, ParcourNew.class);
-                startActivityForResult(userNew, 30);
+
+                Intent selectPar = new Intent(MainActivity.this, SelectParcour.class);
+
+                startActivity(selectPar);
             }
         });
-        sp_pacour = (Spinner) findViewById(R.id.sp_pakour);
-        sp_pacour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Object itemAtPosition = parent.getItemAtPosition(position);
-                System.out.println(itemAtPosition.toString());
-                //TODO: implement
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
+
+
 
         //ScorePoints
         spScorePoints = (Spinner) findViewById(R.id.sp_score);
@@ -77,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object itemAtPosition = parent.getItemAtPosition(position);
 
-                if (ScoreType.NFAS_SPECIAL.getDiscription().equals(itemAtPosition.toString())) {
-                    sts.setScoreType(ScoreType.NFAS_SPECIAL);
+                if (ScoreType.DBSV_STANDARD.getDiscription().equals(itemAtPosition.toString())) {
+                    sts.setScoreType(ScoreType.DBSV_STANDARD);
 
                 } else {
                     sts.setScoreType(ScoreType.NFAS_STANDARD);
@@ -91,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        Button btn_addScoresNew = (Button) findViewById(R.id.btn_add_scores);
+        btn_addScoresNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent scoresNew = new Intent(MainActivity.this, ScoresNew.class);
+                startActivity(scoresNew);
+            }
+        });
+
+
 
         //Users -> open user Activity to add User
         Button btn_addUserNew = (Button) findViewById(R.id.btn_adduser);
@@ -174,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     private void addScoresToSpinner(Spinner spScorePoints) {
         List<String> scoreTyps = new ArrayList<>();
         scoreTyps.add(ScoreType.NFAS_STANDARD.getDiscription());
-        scoreTyps.add(ScoreType.NFAS_SPECIAL.getDiscription());
+        scoreTyps.add(ScoreType.DBSV_STANDARD.getDiscription());
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, scoreTyps);
         spScorePoints.setAdapter(adapter);
     }
