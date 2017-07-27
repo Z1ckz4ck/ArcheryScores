@@ -6,19 +6,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               tools:context="eu.scp.z1ckz4ck.archeryscores.activity.SelectParcour">
-    <EditText
+    <ListView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lv_item_parcour"/>
+    <Button
+            android:text="@string/create_new_parcour"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/txt_new_user_forname"
-            android:hint="@string/txtFirstname"/>
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="@string/txtLastname"
-            android:ems="10"
-            android:id="@+id/txt_new_user_lastname"/>
+            android:id="@+id/btn_create_new_parcour"/>
 
 </RelativeLayout>

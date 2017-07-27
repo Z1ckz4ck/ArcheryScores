@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Parcour implements Serializable{
 
-
+    private Integer id;
     private String name;
     private int targetCount;
     private List<Target> listTargets;
@@ -20,18 +20,19 @@ public class Parcour implements Serializable{
     private ScoreType scoreType;
 
     public Parcour(String name) {
-        this(name,0);
+        this(null,name,0);
     }
 
     /** Construktor initinalize lenght and time with zero
      * @param name -name of the pparcour
      * @param targetCount -
      */
-    public Parcour(String name, int targetCount) {
-        this(name,targetCount,new ArrayList<Target>(),"0","", ScoreType.NFAS_STANDARD);
+    public Parcour(Integer id, String name, int targetCount) {
+        this(id, name,targetCount,new ArrayList<Target>(),"0","", ScoreType.NFAS_STANDARD);
     }
 
-    public Parcour(String name, int targetCount, List<Target> listTargets, String lenght, String timeToFinish, ScoreType scoreType) {
+    public Parcour(Integer id, String name, int targetCount, List<Target> listTargets, String lenght, String timeToFinish, ScoreType scoreType) {
+        this.id = id;
         this.name = name;
         this.targetCount = targetCount;
         this.listTargets = listTargets;
@@ -125,5 +126,13 @@ public class Parcour implements Serializable{
         result = 31 * result + (timeToFinish != null ? timeToFinish.hashCode() : 0);
         result = 31 * result + (scoreType != null ? scoreType.hashCode() : 0);
         return result;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

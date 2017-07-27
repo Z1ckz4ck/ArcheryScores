@@ -1,7 +1,9 @@
 package eu.scp.z1ckz4ck.archeryscores.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,10 +25,20 @@ public class SelectParcour extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_parcour);
-        //sts = (ScoreTrackerService) getApplication();
+        sts = (ScoreTrackerService) getApplication();
 
        // TextView title = (TextView) findViewById(R.id.txt_pacourlist);
-       // Button btn_createNew = (Button) findViewById(R.id.btn_create_new_parcour);
+       Button btn_createNew = (Button) findViewById(R.id.btn_create_new_parcour);
+       btn_createNew.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent newPacour = new Intent(SelectParcour.this, ParcourNew.class);
+
+               startActivityForResult(newPacour, 30);
+           }
+       });
+
+
 
     }
 

@@ -5,5 +5,10 @@ package eu.scp.z1ckz4ck.archeryscores.enums;
  */
 public enum TargetType {
     Standard,
-    Hunter
+    Hunter,
+    Custom;
+
+    public String valueOf(TargetType targetType){
+     return targetType.toString();
+    }
 }

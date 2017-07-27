@@ -9,16 +9,16 @@ import java.io.Serializable;
  */
 public class Target implements Serializable{
 
-
+    private int targetId;
     private Integer nrTarget;
     private String nameTarget;
     private Integer distance;
     private TargetType targetType;
+    private int parcourId;
 
 
-    public Target(Integer nrTarget) {
-        this.nrTarget =nrTarget;
-
+    public Target(int nr) {
+        nrTarget = nr;
     }
 
     /**++++++++++++++++++++++Getter & Setter++++++++++++++++++++++*/
@@ -54,5 +54,17 @@ public class Target implements Serializable{
 
     public void setNrTarget(Integer nrTarget) {
         this.nrTarget = nrTarget;
+    }
+
+    public int getParcourId() { return parcourId; }
+
+    public void setParcourId(int parcourId) { this.parcourId = parcourId; }
+
+    public int getTargetId() {
+        return targetId;
+    }
+
+    public void setTargetId(int targetId) {
+        this.targetId = targetId;
     }
 }

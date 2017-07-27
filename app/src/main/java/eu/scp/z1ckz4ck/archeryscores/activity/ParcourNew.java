@@ -9,40 +9,40 @@ import eu.scp.z1ckz4ck.archeryscores.customAdapter.TargetAdapter;
 import eu.scp.z1ckz4ck.archeryscores.entity.Parcour;
 import eu.scp.z1ckz4ck.archeryscores.entity.Target;
 import eu.scp.z1ckz4ck.archeryscores.enums.ScoreType;
+import eu.scp.z1ckz4ck.archeryscores.services.ScoreTrackerService;
 
 import java.util.*;
 
 
 public class ParcourNew extends AppCompatActivity {
 
-
     private Parcour parcour;
-    private EditText parcourName;
     private EditText parcourTargetCount;
-    private Button parcourCreate;
-    private ListView listViewTargets;
     private Spinner spScoreType;
+    private EditText parcourName;
+    private ScoreTrackerService sts;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parcour_new);
-        parcour = new Parcour("Name");
+
+       sts = (ScoreTrackerService) getApplication();
         init();
     }
 
 
     public void init() {
+        parcour = new Parcour(null);
         parcourName = (EditText) findViewById(R.id.txt_new_parcour_name);
         parcourName.setEnabled(true);
         parcourTargetCount = (EditText) findViewById(R.id.txt_new_parcour_target_count);
         parcourTargetCount.setEnabled(false);
-        parcourCreate = (Button) findViewById(R.id.btn_create_new_parcour);
-        listViewTargets = (ListView) findViewById(R.id.list_targets_new_parcour);
+        Button btnCreate = (Button) findViewById(R.id.btn_create_new_parcour);
 
         spScoreType = (Spinner) findViewById(R.id.sp_score_type_parcoure_new);
-        String[] scoreTypes = new String[]{ScoreType.NFAS_STANDARD.getDiscription(), ScoreType.DBSV_STANDARD.getDiscription()};
+        String[] scoreTypes = new String[]{ScoreType.NFAS_STANDARD.getDiscription(), ScoreType.DBSV_STANDARD.getDiscription(), ScoreType.HUNTER_3D.getDiscription()};
         spScoreType.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, scoreTypes));
         spScoreType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -51,9 +51,12 @@ public class ParcourNew extends AppCompatActivity {
 
                 if (scoretype.toString().equals(ScoreType.NFAS_STANDARD.getDiscription())) {
                     parcour.setScoreType(ScoreType.NFAS_STANDARD);
-                } else {
+                } else if(scoretype.toString().equals(ScoreType.DBSV_STANDARD.getDiscription())) {
                     parcour.setScoreType(ScoreType.DBSV_STANDARD);
+                } else if(scoretype.toString().equals(ScoreType.HUNTER_3D.getDiscription())){
+                    parcour.setScoreType(ScoreType.HUNTER_3D);
                 }
+
             }
 
             @Override
@@ -85,7 +88,6 @@ public class ParcourNew extends AppCompatActivity {
 
                     ArrayList<String> list = new ArrayList<>();
                     for (int i = 1; i <= parcour.getTargetCount(); i++) {
-
                         parcour.addTargetToList(new Target(i));
                     }
 
@@ -95,9 +97,16 @@ public class ParcourNew extends AppCompatActivity {
         });
 
 
-        TargetAdapter targetAdapter = new TargetAdapter(this, new ArrayList<Target>(parcour.getListTargets()));
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        listViewTargets.setAdapter(targetAdapter);
+                //TODO: ADD Parcour to DB sts
+
+                setResult(30);
+                finish();
+            }
+        });
 
 
     }

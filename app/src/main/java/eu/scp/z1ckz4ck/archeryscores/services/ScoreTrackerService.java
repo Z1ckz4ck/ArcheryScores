@@ -1,7 +1,11 @@
 package eu.scp.z1ckz4ck.archeryscores.services;
 
 import android.app.Application;
+import eu.scp.z1ckz4ck.archeryscores.contentProv.DbHandlerParcours;
+import eu.scp.z1ckz4ck.archeryscores.contentProv.DbHandlerTarget;
 import eu.scp.z1ckz4ck.archeryscores.contentProv.DbHandlerUser;
+import eu.scp.z1ckz4ck.archeryscores.contentProv.DbParcour;
+import eu.scp.z1ckz4ck.archeryscores.entity.Parcour;
 import eu.scp.z1ckz4ck.archeryscores.entity.User;
 import eu.scp.z1ckz4ck.archeryscores.enums.ScoreType;
 
@@ -17,6 +21,8 @@ public class ScoreTrackerService extends Application{
     private DbHandlerUser dbHandlerUser;
     private List<User> activeUserL;
     private ScoreType scoreType;
+    private DbHandlerParcours dbHandlerParcours;
+    private DbHandlerTarget dbHanderTargets;
 
     public ScoreTrackerService() {
         dbHandlerUser = new DbHandlerUser(this);
@@ -64,4 +70,14 @@ public class ScoreTrackerService extends Application{
     public void setScoreType(ScoreType scoreType) {
         this.scoreType = scoreType;
     }
+
+
+    public synchronized void addParcour(Parcour parcour){
+        DbParcour par = new DbParcour(parcour.getId(), parcour.getName(),parcour.getTargetCount(), parcour.getLenght(),parcour.getTimeToFinish());
+        dbHandlerParcours.addParcour(par);
+
+        dbHanderTargets.addAll(parcour.getListTargets());
+    }
+
+    public synchronized void deleteParcour(Parcour parcour){};
 }

@@ -42,9 +42,6 @@
                     android:ems="10"
                     android:id="@+id/txt_new_parcour_target_count" android:hint="Count Targets"
                     android:textAlignment="center"/>
-            <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/list_targets_new_parcour"/>
             <TextView
                     android:text="Score Type"
                     android:layout_width="match_parent"
